@@ -1,0 +1,842 @@
+{
+    "order": 0,
+    "template": "syslog-*",
+    "settings": {
+      "index": {
+        "refresh_interval": "5s"
+      }
+    },
+  "mappings": {  "_default_": {
+    "dynamic_templates": [
+      {
+        "message_field": {
+          "mapping": {
+            "index": "analyzed",
+            "omit_norms": true,
+            "type": "string"
+          },
+          "match_mapping_type": "string",
+          "match": "message"
+        }
+      },
+      {
+        "string_fields": {
+          "mapping": {
+            "index": "analyzed",
+            "omit_norms": true,
+            "type": "string",
+            "fields": {
+              "raw": {
+                "index": "not_analyzed",
+                "ignore_above": 256,
+                "type": "string"
+              }
+            }
+          },
+          "match_mapping_type": "string",
+          "match": "*"
+        }
+      }
+    ],
+    "properties": {
+      "geoip": {
+        "dynamic": "true",
+        "properties": {
+          "location": {
+            "lat_lon": true,
+            "type": "geo_point",
+            "geohash": true
+          }
+        }
+      },
+      "DestinationGeo": {
+        "dynamic": "true",
+        "properties": {
+          "location": {
+            "lat_lon": true,
+            "type": "geo_point",
+            "geohash": true
+          }
+        }
+      },
+      "@version": {
+        "index": "not_analyzed",
+        "type": "string"
+      },
+      "SourceGeo": {
+        "dynamic": "true",
+        "properties": {
+          "location": {
+            "lat_lon": true,
+            "type": "geo_point",
+            "geohash": true
+          }
+        }
+      }
+    },
+    "_all": {
+      "enabled": true
+    }
+  },
+  "syslog": {
+    "dynamic_templates": [
+      {
+        "message_field": {
+          "mapping": {
+            "index": "analyzed",
+            "omit_norms": true,
+            "type": "string"
+          },
+          "match_mapping_type": "string",
+          "match": "message"
+        }
+      },
+      {
+        "string_fields": {
+          "mapping": {
+            "index": "analyzed",
+            "omit_norms": true,
+            "type": "string",
+            "fields": {
+              "raw": {
+                "index": "not_analyzed",
+                "ignore_above": 256,
+                "type": "string"
+              }
+            }
+          },
+          "match_mapping_type": "string",
+          "match": "*"
+        }
+      }
+    ],
+    "properties": {
+      "received_at": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "reason": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "dst_port": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "dst_ip": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "hashcode2": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "hashcode1": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "dst_interface": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "type": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "src_port": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "DestinationGeo": {
+        "dynamic": "true",
+        "properties": {
+          "continent_code": {
+            "norms": {
+              "enabled": false
+            },
+            "type": "string",
+            "fields": {
+              "raw": {
+                "index": "not_analyzed",
+                "ignore_above": 256,
+                "type": "string"
+              }
+            }
+          },
+          "location": {
+            "lat_lon": true,
+            "type": "geo_point",
+            "geohash": true
+          },
+          "country_code2": {
+            "norms": {
+              "enabled": false
+            },
+            "type": "string",
+            "fields": {
+              "raw": {
+                "index": "not_analyzed",
+                "ignore_above": 256,
+                "type": "string"
+              }
+            }
+          },
+          "country_code3": {
+            "norms": {
+              "enabled": false
+            },
+            "type": "string",
+            "fields": {
+              "raw": {
+                "index": "not_analyzed",
+                "ignore_above": 256,
+                "type": "string"
+              }
+            }
+          },
+          "longitude": {
+            "type": "double"
+          },
+          "latitude": {
+            "type": "double"
+          },
+          "country_name": {
+            "norms": {
+              "enabled": false
+            },
+            "type": "string",
+            "fields": {
+              "raw": {
+                "index": "not_analyzed",
+                "ignore_above": 256,
+                "type": "string"
+              }
+            }
+          },
+          "ip": {
+            "norms": {
+              "enabled": false
+            },
+            "type": "string",
+            "fields": {
+              "raw": {
+                "index": "not_analyzed",
+                "ignore_above": 256,
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "@version": {
+        "index": "not_analyzed",
+        "type": "string"
+      },
+      "SourceGeo": {
+        "dynamic": "true",
+        "properties": {
+          "dma_code": {
+            "type": "long"
+          },
+          "continent_code": {
+            "norms": {
+              "enabled": false
+            },
+            "type": "string",
+            "fields": {
+              "raw": {
+                "index": "not_analyzed",
+                "ignore_above": 256,
+                "type": "string"
+              }
+            }
+          },
+          "city_name": {
+            "norms": {
+              "enabled": false
+            },
+            "type": "string",
+            "fields": {
+              "raw": {
+                "index": "not_analyzed",
+                "ignore_above": 256,
+                "type": "string"
+              }
+            }
+          },
+          "location": {
+            "lat_lon": true,
+            "type": "geo_point",
+            "geohash": true
+          },
+          "area_code": {
+            "type": "long"
+          },
+          "country_name": {
+            "norms": {
+              "enabled": false
+            },
+            "type": "string",
+            "fields": {
+              "raw": {
+                "index": "not_analyzed",
+                "ignore_above": 256,
+                "type": "string"
+              }
+            }
+          },
+          "ip": {
+            "norms": {
+              "enabled": false
+            },
+            "type": "string",
+            "fields": {
+              "raw": {
+                "index": "not_analyzed",
+                "ignore_above": 256,
+                "type": "string"
+              }
+            }
+          },
+          "region_name": {
+            "norms": {
+              "enabled": false
+            },
+            "type": "string",
+            "fields": {
+              "raw": {
+                "index": "not_analyzed",
+                "ignore_above": 256,
+                "type": "string"
+              }
+            }
+          },
+          "timezone": {
+            "norms": {
+              "enabled": false
+            },
+            "type": "string",
+            "fields": {
+              "raw": {
+                "index": "not_analyzed",
+                "ignore_above": 256,
+                "type": "string"
+              }
+            }
+          },
+          "postal_code": {
+            "norms": {
+              "enabled": false
+            },
+            "type": "string",
+            "fields": {
+              "raw": {
+                "index": "not_analyzed",
+                "ignore_above": 256,
+                "type": "string"
+              }
+            }
+          },
+          "country_code2": {
+            "norms": {
+              "enabled": false
+            },
+            "type": "string",
+            "fields": {
+              "raw": {
+                "index": "not_analyzed",
+                "ignore_above": 256,
+                "type": "string"
+              }
+            }
+          },
+          "country_code3": {
+            "norms": {
+              "enabled": false
+            },
+            "type": "string",
+            "fields": {
+              "raw": {
+                "index": "not_analyzed",
+                "ignore_above": 256,
+                "type": "string"
+              }
+            }
+          },
+          "longitude": {
+            "type": "double"
+          },
+          "latitude": {
+            "type": "double"
+          },
+          "real_region_name": {
+            "norms": {
+              "enabled": false
+            },
+            "type": "string",
+            "fields": {
+              "raw": {
+                "index": "not_analyzed",
+                "ignore_above": 256,
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "err_src_interface": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "fingerprint": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "err_dst_ip": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "err_icmp_type": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "action": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "err_protocol": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "err_icmp_code": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "tags": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "protocol": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "host": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "syslog_severity": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "icmp_code": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "syslog_severity_code": {
+        "type": "long"
+      },
+      "orig_dst_port": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "err_dst_interface": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "geoip": {
+        "dynamic": "true",
+        "properties": {
+          "location": {
+            "lat_lon": true,
+            "type": "geo_point",
+            "geohash": true
+          }
+        }
+      },
+      "interface": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "policy_id": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "icmp_type": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "orig_dst_ip": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "syslog_host": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "@timestamp": {
+        "format": "dateOptionalTime",
+        "type": "date"
+      },
+      "orig_src_port": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "syslog_facility_code": {
+        "type": "long"
+      },
+      "orig_src_ip": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "syslog_facility": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "src_interface": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "syslog_timestamp": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "err_src_ip": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "src_ip": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      },
+      "src_fwuser": {
+        "norms": {
+          "enabled": false
+        },
+        "type": "string",
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "ignore_above": 256,
+            "type": "string"
+          }
+        }
+      }
+    },
+  }
+ }
+}
